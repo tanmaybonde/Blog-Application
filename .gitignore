@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+# git add .; git commit -am "msg";git push
