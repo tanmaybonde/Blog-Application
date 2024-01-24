@@ -41,7 +41,7 @@ public class CategoryControllers {
 	
 //	Put
 	@PutMapping("/{CategoryId}")
-	public ResponseEntity<CategoryDto> updateCategory(@Valid @RequestBody CategoryDto categorydto,@PathVariable("CategoryId") Integer CategoryId)
+	public ResponseEntity<CategoryDto> updateCategory(@Valid @RequestBody CategoryDto categorydto,@PathVariable Integer CategoryId)
 	{
 		CategoryDto UpdateCategory=this.categoryService.updateCategory(categorydto, CategoryId);
 		return ResponseEntity.ok(UpdateCategory);
@@ -49,7 +49,7 @@ public class CategoryControllers {
 	
 //	Delete Mapping
 	@DeleteMapping("/{CategoryId}")
-	public ResponseEntity<ApiResponse> deleteCategory(@PathVariable("CategoryId") Integer CategoryId)
+	public ResponseEntity<ApiResponse> deleteCategory(@PathVariable Integer CategoryId)
 	{
 		this.categoryService.deleteCategory(CategoryId);
 		return new ResponseEntity<ApiResponse>(new ApiResponse("Category Successfully Deleted",true),HttpStatus.OK);
@@ -58,8 +58,8 @@ public class CategoryControllers {
 	// Get -user get
 		@GetMapping("/")
 		public ResponseEntity<CategoryResponse> getAllCategories(
-				@RequestParam(value = "pageNumber",defaultValue = AppContants.PAGE_NUMBER,required = false) Integer pageNumber,
-				@RequestParam(value="pageSize",defaultValue = AppContants.PAGE_SIZE,required = false) Integer pageSize
+				@RequestParam(defaultValue = AppContants.PAGE_NUMBER,required = false) Integer pageNumber,
+				@RequestParam(defaultValue = AppContants.PAGE_SIZE,required = false) Integer pageSize
 				)
 		{
 			return ResponseEntity.ok(this.categoryService.getCategories(pageNumber,pageSize));

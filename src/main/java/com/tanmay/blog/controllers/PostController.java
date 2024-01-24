@@ -81,10 +81,10 @@ public class PostController {
 //	get all post
 	@GetMapping("/posts")
 	public ResponseEntity<PostResponse> getAllPost(
-			@RequestParam(value = "pageNumber",defaultValue = AppContants.PAGE_NUMBER,required = false) Integer pageNumber,
-			@RequestParam(value="pageSize",defaultValue = AppContants.PAGE_SIZE,required = false) Integer pageSize,
+			@RequestParam(defaultValue = AppContants.PAGE_NUMBER,required = false) Integer pageNumber,
+			@RequestParam(defaultValue = AppContants.PAGE_SIZE,required = false) Integer pageSize,
 			@RequestParam(value="sortby",defaultValue = AppContants.SORT_BY,required = false) String sort,
-			@RequestParam(value="sortDir",defaultValue = AppContants.SORT_DIR,required = false) String sortDir
+			@RequestParam(defaultValue = AppContants.SORT_DIR,required = false) String sortDir
 			)
 	{
 		PostResponse postResponse=this.postService.getAllPost(pageNumber,pageSize,sort,sortDir);
@@ -117,7 +117,7 @@ public class PostController {
 	
 //	Search
 	@GetMapping("/posts/search/{keywords}")
-	public ResponseEntity<List<PostDto>> searchPostByTitle(@PathVariable("keywords")String keywords)
+	public ResponseEntity<List<PostDto>> searchPostByTitle(@PathVariable String keywords)
 	{
 		List<PostDto> result = this.postService.searchPost(keywords);
 		return new ResponseEntity<List<PostDto>>(result,HttpStatus.OK);
@@ -128,7 +128,7 @@ public class PostController {
 	// post image upload
 
 		@PostMapping("/post/image/upload/{postId}")
-		public ResponseEntity<PostDto> uploadPostImage(@RequestParam("image") MultipartFile image,
+		public ResponseEntity<PostDto> uploadPostImage(@RequestParam MultipartFile image,
 				@PathVariable Integer postId) throws IOException {
 
 			PostDto postDto = this.postService.getPostById(postId);
@@ -144,7 +144,7 @@ public class PostController {
 	    //method to serve files
 	    @GetMapping(value = "/post/image/{imageName}",produces = MediaType.IMAGE_JPEG_VALUE)
 	    public void downloadImage(
-	            @PathVariable("imageName") String imageName,
+	            @PathVariable String imageName,
 	            HttpServletResponse response
 	    ) throws IOException {
 

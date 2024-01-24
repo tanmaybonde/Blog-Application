@@ -61,8 +61,8 @@ public class UserController {
 	// Get -user get
 	@GetMapping("/")
 	public ResponseEntity<UserResponse> getAllUsers(
-			@RequestParam(value = "pageNumber",defaultValue = AppContants.PAGE_NUMBER,required = false) Integer pageNumber,
-			@RequestParam(value="pageSize",defaultValue = AppContants.PAGE_SIZE ,required = false) Integer pageSize
+			@RequestParam(defaultValue = AppContants.PAGE_NUMBER,required = false) Integer pageNumber,
+			@RequestParam(defaultValue = AppContants.PAGE_SIZE ,required = false) Integer pageSize
 			)
 	{
 		return ResponseEntity.ok(this.userservice.getAllUsers(pageNumber,pageSize));
