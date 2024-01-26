@@ -33,4 +33,7 @@ build/
 .vscode/
 
 
+# create client folder that contain front end code
+# cd client -> npm start
+
 # git add .; git commit -am "msg";git push
