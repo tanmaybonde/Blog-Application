@@ -1,14 +1,19 @@
-const Home=()=>{
+import Base from "../Components/Base";
+import CustomNavbar from "../Components/CustomNavbar";
 
-    return(
-        <div>
 
-            <h1>Hello this is our page</h1>
-            <h1>...Home page...</h1>
+const Home = () => {
 
-            
+    return (
+        <Base>
+            <div>
 
-        </div>
+                <h1>this is home page</h1>
+                <p>Welcome to Home page</p>
+            </div>
+
+
+        </Base>
     );
 };
 

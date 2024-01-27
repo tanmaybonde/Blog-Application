@@ -1,11 +1,16 @@
-const Login=()=>{
+import Base from "../Components/Base";
 
-    return(
-        <div>
+const Login = () => {
 
-            <h1>Hello this is our page</h1>
-            <h1>...Login page...</h1>
-        </div>
+    return (
+        <Base>
+            <div>
+
+                <h1>Hello this is our page</h1>
+                <h1>...Login page...</h1>
+            </div>
+
+        </Base>
     );
 };
 

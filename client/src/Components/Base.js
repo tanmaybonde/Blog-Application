@@ -1,8 +1,10 @@
+import CustomNavbar from "./CustomNavbar";
+
 const Base=({title="Welcome to Blog",children})=>{
     return  (
-        <div classname="container-fluid">
+        <div classname="container-fluid p-0 m-0">
 
-            <h1>this is header</h1>
+            <CustomNavbar/>
 
             {children}
 
