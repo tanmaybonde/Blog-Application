@@ -1,17 +1,24 @@
+import { useState } from "react";
 import Base from "../Components/Base";
-
-const Signup = () => {
-
+import Account from "../Components/LoginSignup/accountBox/index"
+import styled from "styled-components";
+const AppContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+const Login = () => {
+    const loginState = useState('signup');
     return (
         <Base>
-
-            <div>
-
-                <h1>Hello this is our page</h1>
-                <h1>...Signup page...</h1>
-            </div>
+            <AppContainer>
+                <Account loginState={loginState} />
+            </AppContainer>
         </Base>
     );
 };
 
-export default Signup;
+export default Login;

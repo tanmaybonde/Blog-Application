@@ -1,15 +1,22 @@
+import { useState } from "react";
 import Base from "../Components/Base";
-
+import Account from "../Components/LoginSignup/accountBox/index"
+import styled from "styled-components";
+const AppContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 const Login = () => {
-
+    const loginState = useState('signin');
     return (
         <Base>
-            <div>
-
-                <h1>Hello this is our page</h1>
-                <h1>...Login page...</h1>
-            </div>
-
+            <AppContainer>
+                <Account loginState={loginState} />
+            </AppContainer>
         </Base>
     );
 };
