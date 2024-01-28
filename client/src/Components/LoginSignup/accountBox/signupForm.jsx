@@ -12,6 +12,7 @@ import { Marginer } from "../marginer";
 import { AccountContext } from './accountContext';
 import { useState } from "react";
 import { useEffect } from "react";
+import { signup } from "../../../Services/User-Service";
 
 export function SignupForm(props) {
 
@@ -44,7 +45,15 @@ export function SignupForm(props) {
     // validte data
 
     // call the api
-  }
+
+    signup(data).then((resp)=>{
+      console.log(resp);
+      console.log("sucess");
+    }).catch((error)=>{
+      console.log(error);
+      console.log("error log");
+    });
+  };
 
   const { switchToSignin } = useContext(AccountContext);
   return (
