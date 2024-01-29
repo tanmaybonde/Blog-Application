@@ -102,31 +102,33 @@ public class SecurityConfig
 //
 //	        return bean;
 //	    }
-	    @Bean
-	    public FilterRegistrationBean<CorsFilter> coresFilter() {
-	    	UrlBasedCorsConfigurationSource source=new UrlBasedCorsConfigurationSource();
-	    	
-	    	CorsConfiguration corsConfiguration=new CorsConfiguration();
-	    	
-	    	corsConfiguration.setAllowCredentials(true);
-	    	corsConfiguration.addAllowedOriginPattern("*");
-	    	corsConfiguration.addAllowedHeader("Authorization");
-	    	corsConfiguration.addAllowedHeader("content-Type");
-	    	corsConfiguration.addAllowedHeader("Accept");
-	    	corsConfiguration.addAllowedMethod("GET");
-	    	corsConfiguration.addAllowedMethod("POST");
-	    	corsConfiguration.addAllowedMethod("PUT");
-	    	corsConfiguration.addAllowedMethod("DELETE");
-	    	corsConfiguration.addAllowedMethod("OPTIONS");
-	    	corsConfiguration.setMaxAge(3600L);
 	    
-	    	source.registerCorsConfiguration("/**", corsConfiguration);
-	    	
-	    	FilterRegistrationBean<CorsFilter> bean=new FilterRegistrationBean(new CorsFilter(source));
-	    	
-	    	return bean;
-	
-	    }
+	    
+//	    @Bean
+//	    public FilterRegistrationBean<CorsFilter> coresFilter() {
+//	    	UrlBasedCorsConfigurationSource source=new UrlBasedCorsConfigurationSource();
+//	    	
+//	    	CorsConfiguration corsConfiguration=new CorsConfiguration();
+//	    	
+//	    	corsConfiguration.setAllowCredentials(true);
+//	    	corsConfiguration.addAllowedOriginPattern("*");
+//	    	corsConfiguration.addAllowedHeader("Authorization");
+//	    	corsConfiguration.addAllowedHeader("content-Type");
+//	    	corsConfiguration.addAllowedHeader("Accept");
+//	    	corsConfiguration.addAllowedMethod("GET");
+//	    	corsConfiguration.addAllowedMethod("POST");
+//	    	corsConfiguration.addAllowedMethod("PUT");
+//	    	corsConfiguration.addAllowedMethod("DELETE");
+//	    	corsConfiguration.addAllowedMethod("OPTIONS");
+//	    	corsConfiguration.setMaxAge(3600L);
+//	    
+//	    	source.registerCorsConfiguration("/**", corsConfiguration);
+//	    	
+//	    	FilterRegistrationBean<CorsFilter> bean=new FilterRegistrationBean(new CorsFilter(source));
+//	    	
+//	    	return bean;
+//	
+//	    }
 
 
 

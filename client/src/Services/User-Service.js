@@ -1,7 +1,9 @@
 import { myAxios } from "./helper";
 
-export const signup=(user)=>{
-    return myAxios.post('/auth/register',user).then((response)=>response.data)
+export const signup=async(user)=>{
+    const response = await myAxios.post('/auth/register', user);
+    return response.data;
+    
 
     // let data = JSON.stringify({
     //   "name": "Sumit",

@@ -5,6 +5,8 @@ import java.util.Set;
 
 import com.tanmay.blog.entities.Role;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;

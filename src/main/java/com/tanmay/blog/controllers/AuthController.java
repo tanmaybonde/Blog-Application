@@ -26,6 +26,8 @@ import com.tanmay.blog.payloads.UserDto;
 import com.tanmay.blog.security.JwtTokenHelper;
 import com.tanmay.blog.services.UserService;
 
+import jakarta.validation.Valid;
+
 //@RestController
 //@RequestMapping("/api/v1/auth/")
 //public class AuthController {
@@ -81,7 +83,7 @@ import com.tanmay.blog.services.UserService;
 
 @RestController
 @RequestMapping("/auth")
-
+@CrossOrigin
 public class AuthController {
 
     @Autowired
@@ -127,7 +129,7 @@ public class AuthController {
     }
     
     @PostMapping("/register")
-    public ResponseEntity<UserDto> registerUser(@RequestBody UserDto userDto)
+    public ResponseEntity<UserDto> registerUser(@Valid @RequestBody UserDto userDto)
     {
     	UserDto registerNewUser = this.userService.registerNewUser(userDto);
     	return new ResponseEntity<UserDto>(registerNewUser,HttpStatus.CREATED);
