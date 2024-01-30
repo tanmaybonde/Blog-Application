@@ -9,5 +9,7 @@ import lombok.ToString;
 public class JwtAuthResponse {
 	
 	private String token;
+	
+	private UserDto user;
 
 }

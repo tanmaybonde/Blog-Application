@@ -2,6 +2,7 @@ package com.tanmay.blog.controllers;
 
 import javax.naming.AuthenticationException;
 
+import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tanmay.blog.entities.User;
 import com.tanmay.blog.exceptions.ApiException;
 import com.tanmay.blog.payloads.JwtAuthRequest;
 import com.tanmay.blog.payloads.JwtAuthResponse;
@@ -97,6 +99,9 @@ public class AuthController {
 
 
     @Autowired
+    private ModelMapper mapper;
+    
+    @Autowired
     private JwtTokenHelper helper;
 
     private Logger logger = LoggerFactory.getLogger(AuthController.class);
@@ -112,6 +117,7 @@ public class AuthController {
         String token = this.helper.generateToken(userDetails);
         JwtAuthResponse response = new JwtAuthResponse();
         response.setToken(token);
+        response.setUser(this.mapper.map((User)userDetails, UserDto.class));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

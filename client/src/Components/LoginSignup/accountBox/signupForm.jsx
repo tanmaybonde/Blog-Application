@@ -39,39 +39,44 @@ export function SignupForm(props) {
 	}
 
 	const submitForm = (event) => {
-		event.preventDefault()
-
-		// if(error.isError)
-		// {
-		// 	toast.error("Form Data is Invalid !!!")
-		// 	return;
-		// }
-
-		console.log(data)
-		// validte data
-
+		event.preventDefault();
+	
+		if (!data.name || !data.email || !data.password || !data.about) {
+			toast.error("Form Data is Invalid !!!");
+			return;
+		}
+		console.log(data);
+	
+		// validate data (you can add your validation logic here)
+	
 		// call the api
-
-		signup(data).then((resp) => {
-			console.log(resp);
-			console.log("sucess");
-			toast.success("User is register Sucessfully")
-			setData({
-				name: '',
-				email: '',
-				password: '',
-				about: ''
+		signup(data)
+			.then((resp) => {
+				console.log(resp);
+				console.log("success");
+				toast.success("User is registered Successfully");
+				setData({
+					name: '',
+					email: '',
+					password: '',
+					about: ''
+				});
 			})
-		}).catch((error) => {
-			console.log(error);
-			console.log("error log");
-
-			setError({
-				errors:error,
-				isError:true
-			})
-		});
+			.catch((error) => {
+				console.log(error);
+				console.log("error log");
+	
+				if (error.response && error.response.data) {
+					const errors = error.response.data;
+					Object.keys(errors).forEach((field) => {
+						toast.error(`${field}: ${errors[field]}`);
+					});
+				} else {
+					toast.error("An error occurred. Please try again later.");
+				}
+			});
 	};
+	
 
 	const { switchToSignin } = useContext(AccountContext);
 	return (
@@ -83,7 +88,7 @@ export function SignupForm(props) {
 				<Input type="name" placeholder="Full name" onChange={(e) => handleChange(e, 'name')} value={data.name} onInvalid={true}/>
 				<Input type="email" placeholder="Email" onChange={(e) => handleChange(e, 'email')} value={data.email} />
 				<Input type="password" placeholder="Password" onChange={(e) => handleChange(e, 'password')} value={data.password} />
-				<textarea type="about" className="form-control" placeholder="Confirm password" onChange={(e) => handleChange(e, 'about')} value={data.about}></textarea>
+				<textarea type="about" className="form-control" placeholder="About" onChange={(e) => handleChange(e, 'about')} value={data.about}></textarea>
 				<Marginer direction="vertical" margin={10} />
 				<Marginer direction="vertical" margin="5px" />
 				<div className="text-center">
