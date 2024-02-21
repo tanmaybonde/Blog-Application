@@ -90,14 +90,18 @@ let navigate=useNavigate();
               login && (
                 <>
                   <NavItem>
-                    <NavLink onClick={logout}>
-                      Logout
-                    </NavLink>
-                  </NavItem>
+              <NavLink tag={ReactLink} to="/user/profile-info">Profile</NavLink>
+            </NavItem>
 
                   <NavItem>
                     <NavLink>
                       {user.email}
+                    </NavLink>
+                  </NavItem>
+
+                  <NavItem>
+                    <NavLink onClick={logout}>
+                      Logout
                     </NavLink>
                   </NavItem>
                 </>
