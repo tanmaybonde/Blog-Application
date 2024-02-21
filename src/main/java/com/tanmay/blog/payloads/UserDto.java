@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.tanmay.blog.entities.Role;
 
 import jakarta.persistence.Column;
@@ -45,5 +46,12 @@ public class UserDto {
 	public String getPassword() {
 		return this.password;
 	}
+	
+	@JsonProperty
+	public void setPassword(String password) {
+		this.password=password;
+	}
+	
+	
 
 }
