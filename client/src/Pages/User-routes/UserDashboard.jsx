@@ -1,8 +1,12 @@
 import React from 'react'
-
-const UserDashboard =()=> {
+import Base from '../../Components/Base'
+const UserDashboard = () => {
   return (
-    <div>Welcome to User Dashboard</div>
+
+    <Base>
+      <div>Welcome to User Dashboard</div>
+    </Base>
+
   )
 }
 

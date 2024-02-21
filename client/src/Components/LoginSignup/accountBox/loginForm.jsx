@@ -13,18 +13,16 @@ import { AccountContext } from './accountContext';
 import { toast } from "react-toastify";
 import { loginUser } from "../../../Services/User-Service";
 import { doLogin } from "../../../auth";
-
+import { useNavigate } from "react-router-dom";
 export function LoginForm(props) {
 
+  const navigate=useNavigate()
 
   const [loginDetails, setloginDetails] = useState({
     username: '',
     password: '',
   })
-
-
-
-
+  
   const handleChange = (event, field) => {
     let acutalValue = event.target.value
     setloginDetails({
@@ -50,8 +48,7 @@ export function LoginForm(props) {
           console.log("login detail save")
           // redirect to dashboard page
         })
-
-
+        navigate("/user/dashboard")
         toast.success("User Login Successfully");
       })
       .catch((error) => {

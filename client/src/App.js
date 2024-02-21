@@ -25,7 +25,7 @@ function App() {
         <Route path="Signup" element={<Signup />} />
         <Route path="About" element={<About />} />
         <Route path="services" element={<Service />} />
-{/* here nested links are their */}
+{/* here nested links are their for nested you have to use Outlet in it*/}
         <Route path="user" element={<Privateroutes />}>
           <Route path="dashboard" element={<UserDashboard />} />
           <Route path="profile-info" element={<Profileinfo/>}/>
